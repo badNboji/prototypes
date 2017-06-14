@@ -15,7 +15,6 @@ module.exports = function ({types: t }) {
             eachObj.value = newVal.join("/");
           }
         }
-        return t.identifier(node);
       } 
     }
   };
