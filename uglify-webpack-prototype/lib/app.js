@@ -1,3 +1,4 @@
+"use strict";
 
 /* dab var app=require("../src/AddNumbers.js");
 
@@ -17,7 +18,4 @@ describe("Multiply",function(){
 
 */
 
-
-
-
-let hello = "hi";
+var olleh = "hi";

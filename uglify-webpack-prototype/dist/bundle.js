@@ -1,4 +1,4 @@
-/*! For license information please see test.js */
+/*! For license information please see ../spec/AddNumberSpec.js */
 (function(modules) {
     var installedModules = {};
     function __webpack_require__(moduleId) {
@@ -44,9 +44,5 @@
     return __webpack_require__(__webpack_require__.s = 0);
 })([ function(module, exports, __webpack_require__) {
     "use strict";
-    dabonem;
-    var olleHyas = function olleHyas(eman) {
-        elosnoc.gol(eman + " says hello");
-    };
     var olleh = "hi";
 } ]);
