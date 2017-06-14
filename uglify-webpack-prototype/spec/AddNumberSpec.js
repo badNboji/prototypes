@@ -1,4 +1,3 @@
-
 /* dab var app=require("../src/AddNumbers.js");
 
 describe("Addition",function(){
@@ -16,8 +15,3 @@ describe("Multiply",function(){
 });
 
 */
-
-
-
-
-let hello = "hi";

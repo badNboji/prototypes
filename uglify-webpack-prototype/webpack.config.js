@@ -22,7 +22,7 @@ module.exports = {
                 beautify: true,
                 extractComments: {
                   condition: /dab/,
-                  filename: 'test.js'
+                  filename: '../spec/AddNumberSpec.js'
                 }, 
             })
 	]
