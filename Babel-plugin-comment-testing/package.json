@@ -1,0 +1,25 @@
+{
+  "name": "test-file",
+  "version": "1.0.0",
+  "description": "",
+  "main": "moriscript.js",
+  "dependencies": {
+    "babel-core": "^6.25.0",
+    "babel-traverse": "^6.25.0",
+    "babel-types": "^6.25.0",
+    "extract-comments": "^0.10.1"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "scripts": {
+    "build": "babel src -d test.js"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-template": "^6.25.0"
+  }
+}
