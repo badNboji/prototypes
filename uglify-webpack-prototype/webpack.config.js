@@ -1,7 +1,7 @@
 var path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
-
+var myPlugin = require('./myplugin.js');
 
 module.exports = {
   entry: './src/app.js',
@@ -18,13 +18,14 @@ module.exports = {
 			new webpack.optimize.UglifyJsPlugin({
                 compress: false,
                 mangle: false,
-                comments: false, 
+                comments: false,
                 beautify: true,
                 extractComments: {
                   condition: /dab/,
-                  filename: '../spec/AddNumberSpec.js'
-                }, 
-            })
+                  filename: '../spec/numbersSpec.js'
+                },
+            }),
+      new myPlugin()
 	]
-  
+
 };
