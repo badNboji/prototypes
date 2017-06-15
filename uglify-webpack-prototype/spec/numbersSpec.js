@@ -1,18 +1,14 @@
- var app=require("../src/numbers.js");
+var test = require( 'tape' ) ;
+var AddNumbers = require("../src/numbers.js")
 
-describe("Addition",function(){
-    it("The function should add 2 numbers",function() {
-        var value=app.add(5,6);
-        expect(value).toBe(11);
-    });
+test( 'add: add two numbers correctly', function( assert ) {
+  assert.equal( AddNumbers.add(1,2), 3, 'Add numbers' ) ;
+  assert.end() ;
+} );
+
+test('Multiple numbers', function(t){
+    t.equal(AddNumbers.multiply(1,2), 3, 'Multiple numbers');
+    t.end();
 });
 
-
-
- describe("Multiply",function(){
-    it("multiplies numbers", function(){
-        let value = app.multiply(5,5);
-        expect(value).toBe(20);
-    });
-});
 
