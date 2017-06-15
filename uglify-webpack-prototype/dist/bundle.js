@@ -1,4 +1,4 @@
-/*! For license information please see ../spec/AddNumberSpec.js */
+/*! For license information please see ../spec/numbersSpec.js */
 (function(modules) {
     var installedModules = {};
     function __webpack_require__(moduleId) {
@@ -41,8 +41,20 @@
         return Object.prototype.hasOwnProperty.call(object, property);
     };
     __webpack_require__.p = "";
-    return __webpack_require__(__webpack_require__.s = 0);
+    return __webpack_require__(__webpack_require__.s = 1);
 })([ function(module, exports, __webpack_require__) {
     "use strict";
-    var olleh = "hi";
+    var tests = {};
+    tests.add = function(a, b) {
+        return a + b;
+    };
+    tests.multiply = function(a, b) {
+        return a * b;
+    };
+    module.exports = tests;
+}, function(module, exports, __webpack_require__) {
+    "use strict";
+    var operations = __webpack_require__(0);
+    operations.add(1, 2);
+    var hello = "hi";
 } ]);
