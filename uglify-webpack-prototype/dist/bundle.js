@@ -41,7 +41,7 @@
         return Object.prototype.hasOwnProperty.call(object, property);
     };
     __webpack_require__.p = "";
-    return __webpack_require__(__webpack_require__.s = 1);
+    return __webpack_require__(__webpack_require__.s = 2);
 })([ function(module, exports, __webpack_require__) {
     "use strict";
     var tests = {};
@@ -54,7 +54,11 @@
     module.exports = tests;
 }, function(module, exports, __webpack_require__) {
     "use strict";
+    var hello = "hello";
+}, function(module, exports, __webpack_require__) {
+    "use strict";
     var operations = __webpack_require__(0);
+    var test = __webpack_require__(1);
     operations.add(1, 2);
     var hello = "hi";
 } ]);

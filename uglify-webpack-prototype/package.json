@@ -26,6 +26,7 @@
     "install": "^0.10.1",
     "jasmine": "^2.6.0",
     "style-loader": "^0.18.2",
+    "tape": "^4.6.3",
     "uglify-js": "^2.8.29",
     "uglifyjs-webpack-plugin": "^0.4.3",
     "webpack": "^2.6.1",
