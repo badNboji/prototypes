@@ -1,6 +1,7 @@
 var path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
+const myPlugin = require('./myPlugin.js');
 
 
 module.exports = {
@@ -24,7 +25,8 @@ module.exports = {
                   condition: /dab/,
                   filename: '../spec/AddNumberSpec.js'
                 }, 
-            })
+            }),
+      new myPlugin()
 	]
   
 };

@@ -1,13 +1,15 @@
 "use strict";
 
-stset = {};
+tests = {};
 
-stset.rebmuNddA = function (a, b) {
+//! ~dab/changedddddd/ 
+tests.AddNumber = function (a, b) {
     return a + b;
 };
-
-stset.rebmuNelpitluM = function (a, b) {
+//! hi there
+/* ~dab/changedddddd/*/
+tests.MultipleNumber = function (a, b) {
     return a * b;
 };
 
-eludom.stropxe = stset;
+module.exports = tests;

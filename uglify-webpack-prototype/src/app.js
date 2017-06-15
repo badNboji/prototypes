@@ -19,5 +19,9 @@ describe("Multiply",function(){
 
 
 
+//!hi there
 
+function square(n){
+    return n*n;
+}
 let hello = "hi";

@@ -1,4 +1,4 @@
-/* dab var app=require("../src/AddNumbers.js");
+  var app=require("../src/AddNumbers.js");
 
 describe("Addition",function(){
     it("The function should add 2 numbers",function() {
@@ -14,4 +14,4 @@ describe("Multiply",function(){
     }); 
 });
 
-*/
+ 

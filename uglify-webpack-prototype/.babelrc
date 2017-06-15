@@ -1,5 +1,8 @@
 {
     "presets": ["env"],
-    "plugins": ["./plugin.js"]
+    "plugins": [
+        "./plugin.js", 
+        "transform-metamagical-comments"
+        ]
 }
 

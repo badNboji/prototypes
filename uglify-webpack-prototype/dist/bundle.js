@@ -44,5 +44,8 @@
     return __webpack_require__(__webpack_require__.s = 0);
 })([ function(module, exports, __webpack_require__) {
     "use strict";
-    var olleh = "hi";
+    function square(n) {
+        return n * n;
+    }
+    var hello = "hi";
 } ]);

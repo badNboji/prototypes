@@ -1,6 +1,6 @@
 "use strict";
 
-/* dab var app=require("../src/AddNumbers.js");
+/* ~dab/changedddddd/src/AddNumbers.js");
 
 describe("Addition",function(){
     it("The function should add 2 numbers",function() {
@@ -14,8 +14,15 @@ describe("Multiply",function(){
         let value = app.MultipleNumber(5,5);
         expect(value).toBe(20); 
     }); 
-});
+});/
 
 */
 
-var olleh = "hi";
+//! ~dab/changedddddd/
+
+//!hi there
+
+function square(n) {
+    return n * n;
+}
+var hello = "hi";
