@@ -1,4 +1,4 @@
-/*! For license information please see ../spec/numbersSpec.js */
+/*! For license information please see ../tests/tape-test-sample.js */
 (function(modules) {
     var installedModules = {};
     function __webpack_require__(moduleId) {
@@ -41,24 +41,18 @@
         return Object.prototype.hasOwnProperty.call(object, property);
     };
     __webpack_require__.p = "";
-    return __webpack_require__(__webpack_require__.s = 2);
+    return __webpack_require__(__webpack_require__.s = 1);
 })([ function(module, exports, __webpack_require__) {
     "use strict";
-    var tests = {};
-    tests.add = function(a, b) {
+    var operations = {};
+    operations.add = function(a, b) {
         return a + b;
     };
-    tests.multiply = function(a, b) {
+    operations.multiply = function(a, b) {
         return a * b;
     };
-    module.exports = tests;
-}, function(module, exports, __webpack_require__) {
-    "use strict";
-    var hello = "hello";
+    module.exports = operations;
 }, function(module, exports, __webpack_require__) {
     "use strict";
     var operations = __webpack_require__(0);
-    var test = __webpack_require__(1);
-    operations.add(1, 2);
-    var hello = "hi";
 } ]);

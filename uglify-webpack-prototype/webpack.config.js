@@ -1,7 +1,7 @@
-var path = require('path');
+const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const webpack = require('webpack');
-var myPlugin = require('./myplugin.js');
+const webpackCommentExtractionPlugin = require('./webpack-comment-extraction-plugin.js');
 
 module.exports = {
   entry: './src/app.js',
@@ -22,10 +22,10 @@ module.exports = {
                 beautify: true,
                 extractComments: {
                   condition: /dab/,
-                  filename: '../spec/numbersSpec.js'
+                  filename: '../tests/tape-test-sample.js'
                 },
             }),
-      new myPlugin()
+      new webpackCommentExtractionPlugin()
 	]
 
 };

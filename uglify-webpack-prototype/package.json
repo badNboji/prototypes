@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine",
-    "create": "webpack"
+    "test": "node ./tests/tape-test-sample.js | tnyan",
+    "create": "webpack",
+    "babel": "./node_modules/.bin/babel src -d babel-transpiled"
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +27,7 @@
     "install": "^0.10.1",
     "jasmine": "^2.6.0",
     "style-loader": "^0.18.2",
+    "tap-nyan": "^1.1.0",
     "tape": "^4.6.3",
     "uglify-js": "^2.8.29",
     "uglifyjs-webpack-plugin": "^0.4.3",
