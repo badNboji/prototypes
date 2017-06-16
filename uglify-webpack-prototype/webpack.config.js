@@ -21,7 +21,7 @@ module.exports = {
                 comments: false,
                 beautify: true,
                 extractComments: {
-                  condition: /dab/,
+                  condition: /~dab/,
                   filename: '../tests/tape-test-sample.js'
                 },
             }),
