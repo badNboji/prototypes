@@ -9,12 +9,16 @@ module.exports = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
+  resolveLoader:{
+    modules: ['node_modules', path.resolve(__dirname)]
+  },
   module: {
     rules: [
         {test: /\.(js)$/, use: 'babel-loader'}
     ]
   },
   plugins: [
+    new webpackCommentExtractionPlugin(),
 			new webpack.optimize.UglifyJsPlugin({
                 compress: false,
                 mangle: false,
@@ -24,8 +28,7 @@ module.exports = {
                   condition: /~dab/,
                   filename: '../tests/tape-test-sample.js'
                 },
-            }),
-      new webpackCommentExtractionPlugin()
+            })
 	]
 
 };

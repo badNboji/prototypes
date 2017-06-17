@@ -3,6 +3,7 @@ module.exports = function ({types: t}) {
     visitor: {
       Program(path) {
         // if there are comments in the program file
+        console.log(path);
         if (path.parent.comments.length) {
           // loop through comments
           for (let i = 0; i < path.parent.comments.length; i += 1) {
@@ -22,7 +23,7 @@ module.exports = function ({types: t}) {
               let params0 = comment[i].value.substring(0, comma)
               let params1 = comment[i].value.substring(comma + 1).trim();
               let func = params0 + ", function(t) {t."+ params1 +";\nt.end();\n});"
-              console.log('FUNC', func);
+              // console.log('FUNC', func);
               comment[i].value = func;
             }
           }

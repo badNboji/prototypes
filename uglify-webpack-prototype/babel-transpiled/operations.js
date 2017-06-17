@@ -10,10 +10,12 @@ operations.multiply = function (a, b) {
   return a * b;
 };
 
-/* dab const test = require( 'tape' );
+/* ~dab const tape = require('tape');
 const numbers = require('../src/operations.js'); */
 
-/* ~dab('Add - adds numbers', equal(numbers.add(1,2), 2) */
+/* ~dab tape('Add - adds numbers', function(t) {t.equal(numbers.add(1, 2), 2);
+t.end();
+});*/
 
 /* ~dab const numbers = require("../src/operations.js")
 test( 'add: add two numbers correctly', function( assert ) {
