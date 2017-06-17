@@ -7,24 +7,13 @@ operations.add = (a, b) => {
 operations.multiply = (a, b) => {
   return a * b;
 }
-/* dab Tape */
+/* %Tape */
 
-/* dab const numbers = require("../src/operations.js")
-test( 'add: add two numbers correctly', function( assert ) {
-  assert.equal( numbers.add(1,2), 3, 'Add numbers' ) ;
-  assert.end() ;
-} );
+/* ~dab(add: add two numbers correctly, equal(operations.add(1|2), 3, Add numbers)) ; */
 
-test('Multiple numbers', function(t){
-    t.equal(numbers.multiply(1,2), 3, 'Multiple numbers');
-    t.end();
-});
+/* ~dab(Multiple numbers, equal(operations.multiply(1|2), 3, Multiple numbers));
 */
 
-// GUIDE --------------------------------------------------------------
-
-// dab numbers = require('../src/numbers.js');
-
-// dab( Add - adds numbers', equal(numbers.add(1,2), 2)
+// dab hello
 
 module.exports = operations;
