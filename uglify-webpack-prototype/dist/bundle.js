@@ -41,8 +41,15 @@
         return Object.prototype.hasOwnProperty.call(object, property);
     };
     __webpack_require__.p = "";
-    return __webpack_require__(__webpack_require__.s = 1);
+    return __webpack_require__(__webpack_require__.s = 2);
 })([ function(module, exports, __webpack_require__) {
+    "use strict";
+    var anotherFile = {};
+    anotherFile.square = function(a) {
+        return a * a;
+    };
+    module.exports = anotherFile;
+}, function(module, exports, __webpack_require__) {
     "use strict";
     var operations = {};
     operations.add = function(a, b) {
@@ -54,5 +61,6 @@
     module.exports = operations;
 }, function(module, exports, __webpack_require__) {
     "use strict";
-    var operations = __webpack_require__(0);
+    var operations = __webpack_require__(1);
+    var anotherFile = __webpack_require__(0);
 } ]);
