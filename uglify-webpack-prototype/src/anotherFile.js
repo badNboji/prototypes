@@ -6,7 +6,12 @@ anotherFile.square = (a) => {
 
 /* %Tape */
 
-/* ~dab(square root, equal(anotherFile.square(2), 4)); */
+/* 
+  ~>quare root
+  ~>>n = 2
+  ~>anotherFile.square(n) equal 4 
+  ~>anotherFile.square(n) notEqual 4
+  */
 
 
 module.exports = anotherFile;
