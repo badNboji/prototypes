@@ -36,7 +36,7 @@ module.exports = function ({types: t}) {
               
               // currComment[0] is empty
               // currComment[1] is description always
-              let description = currComment[1].split(/\n/)[0];
+              let description = "'" + currComment[1].split(/\r\n/)[0] + "'";
 
               let actual; 
               let expression;
@@ -44,37 +44,45 @@ module.exports = function ({types: t}) {
               let errMessage;
               let resultOfAssertion = "";
               let assertion;
+              let changeComment;
 
               function assertions(string) {
                 let argumentSplit = string.split(":");
-                console.log(" argument split", argumentSplit);
                 //if assertion contains an error message
                 if (argumentSplit.length > 1) {
-                  actual = argumentSplit[0].split(" ")[0];
                   console.log("1st", argumentSplit);
+                  actual = argumentSplit[0].split(" ")[0];
                   expression = argumentSplit[0].split(" ")[1];
                   expected = argumentSplit[0].split(" ")[2];
-                  errMessage = "'" + argumentSplit[1].split(/\n/)[0] + "'";
+                  let message = argumentSplit[1].split(/\r\n/)[0];
+                  errMessage = "'" + message + "'";
+                  console.log(message)
                 } 
-                console.log("out of if", expression, expected, errMessage);
                 //if assertion does not contain an error message
                  if (argumentSplit.length < 2) {
-                   console.log("2nd", argumentSplit);
                   let noArgumentSplit = string.split(" ");
+                  console.log("2nd", noArgumentSplit);
                   actual = noArgumentSplit[0];
                   expression = noArgumentSplit[1];
-                  expected = noArgumentSplit[2];
+                  expected = noArgumentSplit[2].split(/\r\n/)[0];
                   errMessage = "'" + "errorr" + "'";
                 }
                 resultOfAssertion += "   t." + expression + "(" + actual + ", " + expected + ", " + errMessage + ");" + "\n"; 
-                
+                console.log(resultOfAssertion);
                 return resultOfAssertion;
               }
-              // console.log(expected, errMessage, expression)
+             
         
               // if comment[2] does not exist then comment[2] would have been assertion
               if (currComment[2].indexOf(">") === -1) {
-                assertion = assertions(currComment[2]);
+                if (currComment.length >= 3 ){
+                  for(let i = 2; i < currComment.length; i++) {
+                    if (currComment[i] !== undefined && currComment[i] !== " " && currComment[i] !== "") {
+                      assertion = assertions(currComment[i]);
+                    }
+                  }
+                }
+                changeComment = " ~dabtest(" + description + ", function (t) {" + "\n" + assertion  + "   t.end();" + "\n" + "});";
               }
 
 
@@ -87,22 +95,18 @@ module.exports = function ({types: t}) {
                   allVar += "   var " + varStorage[eachVar] + "\n";
                 }
                 variables = allVar;
+                if (currComment.length > 3 ){
+                  for(let i = 3; i < currComment.length; i++) {
+                    if (currComment[i] !== undefined && currComment[i] !== " " && currComment[i] !== "") {
+                      assertion = assertions(currComment[i]);
+                    }
+                  }
+                }
+                changeComment = " ~dabtest(" + description + ", function (t) {" + "\n" + variables + "\n" + assertion + "   t.end();" + "\n" + "});";
               }
-            
-// [ ' \r\n  ',
-//   'quare root\r\n  ',
-//   '   var n = 2\r\n  \n',
-//   'anotherFile.square(n) equal 4\r\n  ' ]
-// [ ' ',
-//   'add: add two numbers correctly\r\n   ',
-//   'operations.add(1,2) equal 3  \r\n   ' ]
-// [ ' ',
-//   'Multiple numbers\r\n  ',
-//   '   var inp1 = 1\n   var  inp2 = 2\r\n  \n',
-//   'operations.multiply(inp1, inp2) equal 3 : Multiple numbers\r\n' ]
               
-              // let changeComment = " ~dabtest(" + description + ", function (t) {" + "\n" + "   t." + expression + "(" + actualFunc + actualInput + ", " + expected + ", " + errorMess + ");" + "\n" + "   t.end();" + "\n" + "});";
-              // comment[i].value = changeComment ;
+          
+              comment[i].value = changeComment ;
               
             } 
           }

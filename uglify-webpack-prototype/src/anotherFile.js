@@ -5,11 +5,10 @@ anotherFile.square = (a) => {
 };
 
 /* %Tape */
-
 /* 
   ~>quare root
   ~>>n = 2
-  ~>anotherFile.square(n) equal 4 
+  ~>anotherFile.square(n) equal 4 : not worth it
   ~>anotherFile.square(n) notEqual 4
   */
 
