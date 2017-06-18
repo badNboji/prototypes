@@ -9,9 +9,13 @@ operations.multiply = (a, b) => {
 }
 /* %Tape */
 
-/* ~dab(add: add two numbers correctly, equal(operations.add(1|2), 3, Add numbers)) ; */
+/* ~>add: add two numbers correctly
+   ~>operations.add(1,2) equal 3 
+   */
 
-/* ~dab(Multiple numbers, equal(operations.multiply(1|2), 3, Multiple numbers));
+/* ~>Multiple numbers
+  ~>>inp1 = 1, inp2 = 2
+  ~>operations.multiply(inp1,inp2) equal 3 : Multiple numbers
 */
 
 // dab hello
