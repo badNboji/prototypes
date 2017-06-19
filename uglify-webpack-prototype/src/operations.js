@@ -9,13 +9,13 @@ operations.multiply = (a, b) => {
 }
 /* %Tape */
 
-/* ~>add: add two numbers correctly
-   ~>operations.add(1,2) equal 3 
+/* ~add: add two numbers correctly
+   ~operations.add(1,2) equal 3 
    */
 
-/* ~>Multiple numbers
-  ~>>inp1 = 1, inp2 = 2
-  ~>operations.multiply(inp1,inp2) equal 3 : Multiple numbers
+/* ~Multiple numbers
+  ~var inp1 = 1, inp2 = 2
+  ~operations.multiply(inp1,inp2) equal 3 : Multiple numbers
 */
 
 // dab hello

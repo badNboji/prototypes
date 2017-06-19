@@ -1,15 +1,14 @@
-const test = require( 'tape' ); 
 const anotherFile = require('C:/Users/Batul/Desktop/prototypes/uglify-webpack-prototype/src/anotherFile.js');
 
 test('quare root', function (t) {
-   var n = 2
-  
-
+   var  n = 2;
+   var  ;
    t.equal(anotherFile.square(n), 4, ' not worth it');
    t.notEqual(anotherFile.square(n), 4, 'errorr');
    t.end();
 });
 
+const test = require( 'tape' ); 
 const operations = require('C:/Users/Batul/Desktop/prototypes/uglify-webpack-prototype/src/operations.js');
 
 test('add: add two numbers correctly', function (t) {
@@ -18,10 +17,10 @@ test('add: add two numbers correctly', function (t) {
 });
 
 test('Multiple numbers', function (t) {
-   var inp1 = 1
-   var  inp2 = 2
-  
-
+   var  inp1 = 1;
+   var  inp2 = 2;
    t.equal(operations.multiply(inp1,inp2), 3, ' Multiple numbers');
    t.end();
 });
+
+// dab hello
