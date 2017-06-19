@@ -15,8 +15,8 @@ module.exports = function ({types: t}) {
             // console.log('COMMENTS', path.parent.comments[i].value)
             let comment = path.parent.comments
             // console.log(tapeCount);
-            let reqTape = " ~dabconst test = require( 'tape' ); " + "\n" + "const " + state.file.opts.sourceMapTarget.slice(0,state.file.opts.sourceMapTarget.length-3) + " = require('" + state.file.opts.filename + "');"
-            let reqFileName = " ~dabconst " + state.file.opts.sourceMapTarget.slice(0,state.file.opts.sourceMapTarget.length-3) + " = require('" + state.file.opts.filename + "');";
+            let reqTape = " dabconst test = require( 'tape' ); " + "\n" + "const " + state.file.opts.sourceMapTarget.slice(0,state.file.opts.sourceMapTarget.length-3) + " = require('" + state.file.opts.filename + "');"
+            let reqFileName = " dabconst " + state.file.opts.sourceMapTarget.slice(0,state.file.opts.sourceMapTarget.length-3) + " = require('" + state.file.opts.filename + "');";
             // if a comment requires Tape then replace with complete require statement
             if (comment[i].value.includes('%Tape')) {
               // console.log("comm", comment[i].value);
@@ -30,9 +30,9 @@ module.exports = function ({types: t}) {
                 tapeCount++;
               }
             } 
-            if (comment[i].value.includes('~>')) {
+            if (comment[i].value.includes('~')) {
 
-              let currComment = comment[i].value.split("~>");
+              let currComment = comment[i].value.split("~");
               
               // currComment[0] is empty
               // currComment[1] is description always
@@ -50,7 +50,7 @@ module.exports = function ({types: t}) {
                 let argumentSplit = string.split(":");
                 //if assertion contains an error message
                 if (argumentSplit.length > 1) {
-                  console.log("1st", argumentSplit);
+                  // console.log("1st", argumentSplit);
                   actual = argumentSplit[0].split(" ")[0];
                   expression = argumentSplit[0].split(" ")[1];
                   expected = argumentSplit[0].split(" ")[2];
@@ -61,7 +61,7 @@ module.exports = function ({types: t}) {
                 //if assertion does not contain an error message
                  if (argumentSplit.length < 2) {
                   let noArgumentSplit = string.split(" ");
-                  console.log("2nd", noArgumentSplit);
+                  // console.log("2nd", noArgumentSplit);
                   actual = noArgumentSplit[0];
                   expression = noArgumentSplit[1];
                   expected = noArgumentSplit[2].split(/\r\n/)[0];
@@ -74,7 +74,7 @@ module.exports = function ({types: t}) {
              
         
               // if comment[2] does not exist then comment[2] would have been assertion
-              if (currComment[2].indexOf(">") === -1) {
+              if (currComment[2].indexOf("var") === -1) {
                 if (currComment.length >= 3 ){
                   for(let i = 2; i < currComment.length; i++) {
                     if (currComment[i] !== undefined && currComment[i] !== " " && currComment[i] !== "") {
@@ -82,17 +82,28 @@ module.exports = function ({types: t}) {
                     }
                   }
                 }
-                changeComment = " ~dabtest(" + description + ", function (t) {" + "\n" + assertion  + "   t.end();" + "\n" + "});";
+                changeComment = " dabtest(" + description + ", function (t) {" + "\n" + assertion  + "   t.end();" + "\n" + "});";
               }
 
 
               // if currComment[2] is a variable (optional)
               let variables;
-              if (currComment[2].indexOf(">") !== -1) {
-                let varStorage = currComment[2].slice(1).split(",");
+              if (currComment[2].indexOf("var") !== -1) {
+                let varStorage = currComment[2].slice(3).split(",");
                 let allVar = "";
                 for(let eachVar = 0; eachVar < varStorage.length; eachVar++) {
-                  allVar += "   var " + varStorage[eachVar] + "\n";
+                  console.log("Variable storage" , varStorage);
+                  if (varStorage[eachVar] !== "" && varStorage[eachVar] !== " " && varStorage[eachVar] !== undefined) {
+                    if (eachVar == varStorage.length-1) {
+                      console.log("last var" , eachVar, varStorage[eachVar]);
+                      allVar += "   var " + varStorage[eachVar].split(/\r\n/)[0] + ";";
+                    } else {
+                      console.log("first var", eachVar, allVar);
+                      allVar += "   var " + varStorage[eachVar] + ";" + "\n";
+                    }
+                  } else {
+                    continue;
+                  }
                 }
                 variables = allVar;
                 if (currComment.length > 3 ){
@@ -102,7 +113,7 @@ module.exports = function ({types: t}) {
                     }
                   }
                 }
-                changeComment = " ~dabtest(" + description + ", function (t) {" + "\n" + variables + "\n" + assertion + "   t.end();" + "\n" + "});";
+                changeComment = " dabtest(" + description + ", function (t) {" + "\n" + variables + "\n" + assertion + "   t.end();" + "\n" + "});";
               }
               
           
