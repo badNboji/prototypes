@@ -2,7 +2,6 @@ const anotherFile = require('C:/Users/Batul/Desktop/prototypes/uglify-webpack-pr
 
 test('quare root', function (t) {
    var  n = 2;
-   var  ;
    t.equal(anotherFile.square(n), 4, ' not worth it');
    t.notEqual(anotherFile.square(n), 4, 'errorr');
    t.end();
