@@ -44,11 +44,20 @@
     return __webpack_require__(__webpack_require__.s = 2);
 })([ function(module, exports, __webpack_require__) {
     "use strict";
-    var anotherFile = {};
-    anotherFile.square = function(a) {
-        return a * a;
+    var mvpDemo = {};
+    mvpDemo.isNegativeOrOdd = function(value) {
+        return value < 0 || value % 2 !== 0;
     };
-    module.exports = anotherFile;
+    mvpDemo.add = function(a, b) {
+        return a + b;
+    };
+    mvpDemo.multiply = function(a, b) {
+        return a * b;
+    };
+    mvpDemo.reverseString = function(string) {
+        return string.split("").reverse().join("");
+    };
+    module.exports = mvpDemo;
 }, function(module, exports, __webpack_require__) {
     "use strict";
     var operations = {};
@@ -62,5 +71,5 @@
 }, function(module, exports, __webpack_require__) {
     "use strict";
     var operations = __webpack_require__(1);
-    var anotherFile = __webpack_require__(0);
+    var mvpDemo = __webpack_require__(0);
 } ]);
