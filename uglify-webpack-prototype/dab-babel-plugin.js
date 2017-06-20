@@ -3,21 +3,20 @@ module.exports = function ({types: t}) {
   return {
     visitor: {
       Program(path, state) {
-        // if there are comments in the program file
+        // if there are comments in the program file 
         if (path.parent.comments.length) {
 
-          // loop through comments
-          
+          // loop through the comments
           for (let i = 0; i < path.parent.comments.length; i += 1) {
-            let testArr = [];
+            
             // console.log('COMMENTS', path.parent.comments[i].value)
             let comment = path.parent.comments
-            // console.log(tapeCount);
+            // require tape library setup
             let reqTape = " dabconst test = require( 'tape' ); " + "\n" + "const " + state.file.opts.sourceMapTarget.slice(0,state.file.opts.sourceMapTarget.length-3) + " = require('" + state.file.opts.filename + "');"
+            // require file name setup
             let reqFileName = " dabconst " + state.file.opts.sourceMapTarget.slice(0,state.file.opts.sourceMapTarget.length-3) + " = require('" + state.file.opts.filename + "');";
             // if a comment requires Tape then replace with complete require statement
             if (comment[i].value.includes('%Tape')) {
-              // console.log("comm", comment[i].value);
               if (tapeCount === 0) {
                 // console.log("first", comment[i].value );
                 comment[i].value = reqTape;
@@ -29,6 +28,7 @@ module.exports = function ({types: t}) {
               }
             } 
 
+            // comment check for our grammer syntax
             if (comment[i].value.includes('~')) {
               let currComment = comment[i].value.split("~");
   
@@ -45,10 +45,12 @@ module.exports = function ({types: t}) {
               let assertion;
               let changeComment;
 
+              // the function that splits the assertion: actual, expected, and expression
               function assertions(string) {
                 let argumentSplit = string.split("|");
                 let threeArgExpression = ["equal", "notEqual", "deepEqual", "notDeepEqual", "deepLooseEqual", "notDeepLooseEqual"];
                 
+                //find the expression
                 for (let j = 0; j < threeArgExpression.length; j++) {
                     if (argumentSplit[0].indexOf(threeArgExpression[j]) !== -1) {
                      var startIndExpression = argumentSplit[0].indexOf(threeArgExpression[j]);
@@ -77,7 +79,6 @@ module.exports = function ({types: t}) {
                   expected = argumentSplit[0].slice(startIndExpression + expressionEndPoint).replace(/\r\n/, "\n").split(/\n/)[0];
                   errMessage = "'" + "errorr" + "'";                         
                 }
-                console.log(actual, expected, expression);
                 resultOfAssertion +=  "\t" + "t." + expression + "(" + actual + ", " + expected + ", " + errMessage + ");" + "\n"; 
                 // console.log(resultOfAssertion);
                 return resultOfAssertion;
@@ -115,6 +116,7 @@ module.exports = function ({types: t}) {
                   }
                 }
                 variables = allVar;
+                //once variables are done currComment[3] and so on will be assertion 
                 if (currComment.length > 3 ){
                   for(let i = 3; i < currComment.length; i++) {
                     if (currComment[i] !== undefined && currComment[i] !== " " && currComment[i] !== "") {
@@ -122,6 +124,7 @@ module.exports = function ({types: t}) {
                     }
                   }
                 }
+                //test setup
                 changeComment = " dabtest(" + description + ", function (t) {" + "\n" + variables + "\n" + assertion +  "\t" + "t.end();" + "\n" + "});";
               }
               comment[i].value = changeComment;
