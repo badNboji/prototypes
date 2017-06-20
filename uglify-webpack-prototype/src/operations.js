@@ -14,8 +14,8 @@ operations.multiply = (a, b) => {
    */
 
 /* ~Multiple numbers
-  ~var inp1 = 1, inp2 = 2
-  ~operations.multiply(inp1,inp2) equal 3 : Multiple numbers
+  ~v inp1 = 1; inp2 = 2
+  ~operations.multiply(inp1,inp2) equal 2 
 */
 
 // dab hello
