@@ -1,4 +1,3 @@
-const test = require( 'tape' ); 
 const mvpDemo = require('C:/Users/Batul/Desktop/prototypes/uglify-webpack-prototype/src/mvpDemo.js');
 
 test('Negative or Odd', function (t) {
@@ -24,6 +23,7 @@ test('Reverse String', function (t) {
 	t.end();
 });
 
+const test = require( 'tape' ); 
 const operations = require('C:/Users/Batul/Desktop/prototypes/uglify-webpack-prototype/src/operations.js');
 
 test('add: add two numbers correctly', function (t) {
